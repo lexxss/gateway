@@ -1,0 +1,10 @@
+# For add admin user
+# useradd -r -g root -G sudo -s /bin/bash -p $(openssl passwd -1 user_password) user_name
+
+# For disable remote root login change /etc/ssh/sshd_config
+# PermitRootLogin yes
+# to
+# PermitRootLogin no
+
+# For enable sudo without password add this line to end of file /etc/sudoers
+# user_name    ALL=(ALL) NOPASSWD:ALL
