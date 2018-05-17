@@ -13,7 +13,7 @@ fi
 
 set -x #echo on
 
-if [ -z $noaptupdate ] || [ $noaptupdate != "noaptupdate" ]; then
+if [ -z ${noaptupdate} ] || [ ${noaptupdate} != "noaptupdate" ]; then
   apt update
 fi
 

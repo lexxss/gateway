@@ -13,8 +13,13 @@ if    [ -z ${user_name} ] || [ -z ${user_pass} ]      || [ -z ${strongSwanIP} ]\
   exit 1
 fi
 
+read -p "Continue setup gateway (y/n)? " answer
+if [ "$answer" != "y" ]; then
+  exit
+fi
+
 set -x #echo on
-#apt update
+apt update
 set +x #echo off
 
 sh setupSquid.sh ${squidPort} ${user_name} ${user_pass} noaptupdate

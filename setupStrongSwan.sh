@@ -13,7 +13,7 @@ fi
 
 set -x #echo on
 
-if [ -z $noaptupdate ] || [ $noaptupdate != "noaptupdate" ]; then
+if [ -z ${noaptupdate} ] || [ ${noaptupdate} != "noaptupdate" ]; then
   apt update
 fi
 
@@ -58,6 +58,8 @@ chgrp root /etc/ipsec.d/private/vpn-server-key.pem
 chmod 600 /etc/ipsec.d/private/vpn-server-key.pem
 
 cp /etc/ipsec.conf /etc/ipsec.conf.original
+
+cd ..
 
 cat > /etc/ipsec.conf <<EOF
 config setup
