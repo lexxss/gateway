@@ -23,8 +23,8 @@ set -x #echo on
 apt update
 set +x #echo off
 
-curl -s -L ${githubpath}/setupSquid.sh | sudo bash -s ${squidPort} ${user_name} ${user_pass} noaptupdate
+sudo bash <(curl -s -L ${githubpath}/setupSquid.sh) ${squidPort} ${user_name} ${user_pass} noaptupdate
 set +x #echo off
-curl -s -L ${githubpath}/setupDanteServer.sh | sudo bash -s ${danteInterface} ${dantePort} ${user_name} ${user_pass} noaptupdate
+sudo bash <(curl -s -L ${githubpath}/setupDanteServer.sh) ${danteInterface} ${dantePort} ${user_name} ${user_pass} noaptupdate
 set +x #echo off
-curl -s -L ${githubpath}/setupStrongSwan.sh | sudo bash -s ${strongSwanIP} ${user_name} ${user_pass} noaptupdate
+sudo bash <(curl -s -L ${githubpath}/setupStrongSwan.sh) ${strongSwanIP} ${user_name} ${user_pass} noaptupdate
