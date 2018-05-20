@@ -15,7 +15,7 @@ if    [ -z ${user_name} ] || [ -z ${user_pass} ]      || [ -z ${strongSwanIP} ]\
 fi
 
 if [ "$(id -u)" != "0" ]; then
-    echo "ERROR: $0 Must be run as root"
+    echo "ERROR: Must be run as root"
     exit 1
 fi
 
