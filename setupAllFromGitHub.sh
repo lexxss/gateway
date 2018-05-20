@@ -28,6 +28,8 @@ set -x #echo on
 apt update
 set +x #echo off
 
+cd /home
+
 bash <(curl -s -L ${githubpath}/setupSquid.sh) ${squidPort} ${user_name} ${user_pass} noaptupdate
 set +x #echo off
 bash <(curl -s -L ${githubpath}/setupDanteServer.sh) ${danteInterface} ${dantePort} ${user_name} ${user_pass} noaptupdate

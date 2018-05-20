@@ -120,6 +120,7 @@ ipsec listcerts
 echo vpn client cert
 cat vpn_certs/server-root-ca.pem
 
+set +x #echo off
 echo "check ssh connection, if all ok run commands:"
 echo "netfilter-persistent save"
 echo "netfilter-persistent reload"
