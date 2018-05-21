@@ -13,6 +13,13 @@ if    [ -z ${user_name} ] || [ -z ${user_pass} ]      || [ -z ${strongSwanIP} ]\
   exit 1
 fi
 
+if [ "$(id -u)" != "0" ]; then
+    echo "ERROR: Must be run as root"
+    exit 1
+fi
+
+cd /home
+
 read -p "Continue setup gateway (y/n)? " answer
 if [ "$answer" != "y" ]; then
   exit
