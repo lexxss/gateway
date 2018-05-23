@@ -29,8 +29,27 @@ set -x #echo on
 apt update
 set +x #echo off
 
-sh setupSquid.sh ${squidPort} ${user_name} ${user_pass} noaptupdate
+bash setupSquid.sh ${squidPort} ${user_name} ${user_pass} noaptupdate
 set +x #echo off
-sh setupDanteServer.sh ${danteInterface} ${dantePort} ${user_name} ${user_pass} noaptupdate
+bash setupDanteServer.sh ${danteInterface} ${dantePort} ${user_name} ${user_pass} noaptupdate
 set +x #echo off
-sh setupStrongSwan.sh ${strongSwanIP} ${user_name} ${user_pass} noaptupdate
+bash setupStrongSwan.sh ${strongSwanIP} ${user_name} ${user_pass} noaptupdate
+set +x #echo off
+bash setupNetwork.sh
+
+set +x #echo off
+echo '+'
+echo '+'
+echo '+'
+echo '+'
+echo '+'
+echo '+'
+echo '+'
+echo '+'
+echo '+'
+echo '+'
+
+echo "check ssh connection, if all ok run commands:"
+echo "netfilter-persistent save"
+echo "netfilter-persistent reload"
+echo "Setup complete"

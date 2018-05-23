@@ -1,5 +1,0 @@
-# Check socks5 proxy
-# curl -v -x socks5://userName:userPassword@ip:port http://www.google.com/
-
-# Check http proxy
-# curl -v -x http://userName:userPassword@ip:port http://www.google.com/

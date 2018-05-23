@@ -1,3 +1,10 @@
+# Check socks5 proxy
+# curl -v -x socks5://userName:userPassword@ip:port http://www.google.com/
+
+# Check http proxy
+# curl -v -x http://userName:userPassword@ip:port http://www.google.com/
+
+
 # For add admin user
 # useradd -r -g root -G sudo -s /bin/bash -p $(openssl passwd -1 user_password) user_name
 
