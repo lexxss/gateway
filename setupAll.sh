@@ -30,13 +30,13 @@ set -x #echo on
 apt update
 set +x #echo off
 
-bash <(curl -s -L ${githubpath}/setupSquid.sh) ${squidPort} ${user_name} ${user_pass} noaptupdate
+bash <(wget -qO- ${githubpath}/setupSquid.sh) ${squidPort} ${user_name} ${user_pass} noaptupdate
 set +x #echo off
-bash <(curl -s -L ${githubpath}/setupDanteServer.sh) ${danteInterface} ${dantePort} ${user_name} ${user_pass} noaptupdate
+bash <(wget -qO- ${githubpath}/setupDanteServer.sh) ${danteInterface} ${dantePort} ${user_name} ${user_pass} noaptupdate
 set +x #echo off
-bash <(curl -s -L ${githubpath}/setupStrongSwan.sh) ${strongSwanIP} ${user_name} ${user_pass} noaptupdate
+bash <(wget -qO- ${githubpath}/setupStrongSwan.sh) ${strongSwanIP} ${user_name} ${user_pass} noaptupdate
 set +x #echo off
-bash <(curl -s -L ${githubpath}/setupNetwork.sh)
+bash <(wget -qO- ${githubpath}/setupNetwork.sh)
 
 set +x #echo off
 echo '+'
