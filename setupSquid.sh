@@ -19,7 +19,7 @@ fi
 apt -y install squid
 apt -y install apache2-utils
 
-cat > /etc/danted.conf <<EOF
+cat > /etc/squid/squid.conf <<EOF
 #	WELCOME TO SQUID 3.5.12
 #	----------------------------
 #	

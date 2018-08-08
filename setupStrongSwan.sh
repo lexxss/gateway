@@ -43,7 +43,7 @@ ipsec pki --pub --in vpn-server-key.pem \
 --cacert server-root-ca.pem \
 --cakey server-root-key.pem \
 --dn "C=US, O=VPN Server, CN=${server_ip}" \
---san "'"${server_ip}"'" \
+--san "${server_ip}" \
 --flag serverAuth --flag ikeIntermediate \
 --outform pem > vpn-server-cert.pem
 
