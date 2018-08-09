@@ -18,10 +18,107 @@ if [ -z ${noaptupdate} ] || [ ${noaptupdate} != "noaptupdate" ]; then
 fi
 
 apt -y install netfilter-persistent
-apt -y install strongswan
-apt -y install strongswan-plugin-eap-mschapv2
+#apt -y install strongswan # v5.3.5 for ubuntu 16.04
+#apt -y install strongswan-plugin-eap-mschapv2
 apt -y install moreutils
 apt -y install iptables-persistent
+
+# for make strongswan
+apt -y install libgmp-dev
+apt -y install libssl-dev
+apt -y install libxml2-dev
+apt -y install libpcsclite-dev
+apt -y install libpam0g-dev
+apt -y install libiptcdata0-dev
+apt -y install iptables-dev
+apt -y install pkg-config
+
+STRONGSWAN_VERSION="5.5.0"
+
+mkdir -p /usr/src/strongswan \
+	&& cd /usr/src \
+	&& curl -SOL "https://download.strongswan.org/strongswan-$STRONGSWAN_VERSION.tar.gz" \
+	&& export GNUPGHOME="$(mktemp -d)" \
+	&& tar -zxf strongswan-$STRONGSWAN_VERSION.tar.gz -C /usr/src/strongswan --strip-components 1 \
+	&& cd /usr/src/strongswan \
+	&& ./configure --prefix=/usr --sysconfdir=/etc \
+--enable-charon \
+--enable-counters \
+--enable-curve25519 \
+--enable-des \
+--enable-mgf1 \
+--enable-test-vectors \
+--enable-aes \
+--enable-rc2 \
+--enable-sha1 \
+--enable-sha2 \
+--enable-md4 \
+--enable-md5 \
+--enable-random \
+--enable-nonce \
+--enable-x509 \
+--enable-revocation \
+--enable-constraints \
+--enable-pubkey \
+--enable-pkcs1 \
+--enable-pkcs7 \
+--enable-pkcs8 \
+--enable-pkcs12 \
+--enable-pgp \
+--enable-dnskey \
+--enable-sshkey \
+--enable-pem \
+--enable-openssl \
+--enable-fips-prf \
+--enable-gmp \
+--enable-agent \
+--enable-xcbc \
+--enable-cmac \
+--enable-hmac \
+--enable-gcm \
+--enable-attr \
+--enable-kernel-netlink \
+--enable-resolve \
+--enable-socket-default \
+--enable-connmark \
+--enable-farp \
+--enable-stroke \
+--enable-updown \
+--enable-eap-identity \
+--enable-eap-sim \
+--enable-eap-sim-pcsc \
+--enable-eap-aka \
+--enable-eap-aka-3gpp2 \
+--enable-eap-simaka-pseudonym \
+--enable-eap-simaka-reauth \
+--enable-eap-md5 \
+--enable-eap-gtc \
+--enable-eap-mschapv2 \
+--enable-eap-dynamic \
+--enable-eap-radius \
+--enable-eap-tls \
+--enable-eap-ttls \
+--enable-eap-peap \
+--enable-eap-tnc \
+--enable-xauth-generic \
+--enable-xauth-eap \
+--enable-xauth-pam \
+--enable-xauth-noauth \
+--enable-tnc-tnccs \
+--enable-tnccs-20 \
+--enable-tnccs-11 \
+--enable-tnccs-dynamic \
+--enable-dhcp \
+--enable-lookip \
+--enable-error-notify \
+--enable-certexpire \
+--enable-led \
+--enable-addrblock \
+--enable-unity \
+	&& make -j \
+#	&& make uninstall \
+	&& make install \
+	&& rm -rf "/usr/src/strongswan*"
 
 mkdir vpn_certs
 
