@@ -116,7 +116,6 @@ mkdir -p /usr/src/strongswan \
 --enable-addrblock \
 --enable-unity \
 	&& make -j \
-#	&& make uninstall \
 	&& make install \
 	&& rm -rf "/usr/src/strongswan*"
 
