@@ -115,9 +115,11 @@ mkdir -p /usr/src/strongswan \
 --enable-led \
 --enable-addrblock \
 --enable-unity \
-	&& make -j \
-	&& make install \
-	&& rm -rf "/usr/src/strongswan*"
+ && make -j \
+ && make install \
+ && rm -rf "/usr/src/strongswan*"
+
+cd /home
 
 mkdir vpn_certs
 
