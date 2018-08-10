@@ -203,6 +203,27 @@ ${server_ip} : RSA "/etc/ipsec.d/private/vpn-server-key.pem"
 ${user_name} %any% : EAP "${user_pass}"
 EOF
 
+cat > /etc/init.d/ipsec_start.sh <<EOF
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          ipsec
+# Required-Start:    \$remote_fs \$syslog
+# Required-Stop:     \$remote_fs \$syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: ipsec start
+# Description:       ipsec start
+#                    placed in /etc/init.d.
+### END INIT INFO
+
+ipsec start
+EOF
+
+chmod 777 /etc/init.d/ipsec_start.sh
+chmod ugo+x /etc/init.d/ipsec_start.sh
+update-rc.d ipsec_start.sh defaults
+
 ipsec restart
 ipsec listcerts
 
