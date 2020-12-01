@@ -2,15 +2,14 @@
 
 user_name=$1
 user_pass=$2
-strongSwanIP=$3
-squidPort=$4
-danteInterface=$5
-dantePort=$6
+squidPort=$3
+danteInterface=$4
+dantePort=$5
 githubpath=https://github.com/lexxss/gateway/raw/master
 
-if    [ -z ${user_name} ] || [ -z ${user_pass} ]      || [ -z ${strongSwanIP} ]\
+if    [ -z ${user_name} ] || [ -z ${user_pass} ]\
    || [ -z ${squidPort} ] || [ -z ${danteInterface} ] || [ -z ${dantePort} ]; then
-  echo "Usage: user_name user_pass strongSwanIP squidPort danteInterface dantePort"
+  echo "Usage: user_name user_pass squidPort danteInterface dantePort"
   exit 1
 fi
 
@@ -33,8 +32,6 @@ set +x #echo off
 bash <(wget -qO- ${githubpath}/setupSquid.sh) ${squidPort} ${user_name} ${user_pass} noaptupdate
 set +x #echo off
 bash <(wget -qO- ${githubpath}/setupDanteServer.sh) ${danteInterface} ${dantePort} ${user_name} ${user_pass} noaptupdate
-set +x #echo off
-bash <(wget -qO- ${githubpath}/setupStrongSwan.sh) ${strongSwanIP} ${user_name} ${user_pass} noaptupdate
 set +x #echo off
 bash <(wget -qO- ${githubpath}/setupNetwork.sh)
 
