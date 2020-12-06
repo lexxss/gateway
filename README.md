@@ -1,6 +1,6 @@
 # gateway
 
-Ubuntu 16.04 - Install and setup gateway
+Ubuntu 16.04 or higher - Install and setup gateway
 
 * Dante (SOCKS Proxy)
 * Squid (HTTP/S Proxy)
