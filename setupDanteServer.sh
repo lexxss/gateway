@@ -119,11 +119,11 @@ pass {
 
 
 # when running as usual, it will use the unprivileged userid of:
-user.notprivileged: nobody
+# user.notprivileged: nobody
 
 # If you compiled with libwrap support, what userid should it use
 # when executing your libwrap commands?  "libwrap".
-user.libwrap: nobody
+# user.libwrap: nobody
 
 
 #
