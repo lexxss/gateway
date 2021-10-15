@@ -307,3 +307,4 @@ EOF
 
 useradd --shell /usr/sbin/nologin -p $(openssl passwd -1 ${user_pass}) ${user_name}
 systemctl restart danted
+systemctl enable danted
