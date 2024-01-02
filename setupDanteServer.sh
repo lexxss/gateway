@@ -63,7 +63,7 @@ cat > /etc/danted.conf <<EOF
 
 # the server will log both via syslog, to stdout and to /var/log/lotsoflogs
 #logoutput: syslog stdout /var/log/lotsoflogs
-logoutput: stderr
+logoutput: syslog stdout /var/log/sockd.log
 
 # The server will bind to the address 10.1.1.1, port 1080 and will only
 # accept connections going to that address.
@@ -86,7 +86,7 @@ external: ${interface}
 
 # methods for socks-rules.
 #ch###################################################################################################
-method: username
+socksmethod: username
 
 # methods for client-rules.
 #clientmethod: username
@@ -106,6 +106,8 @@ method: username
 #ch###################################################################################################
 user.privileged: root
 
+# when running as usual, it will use the unprivileged userid of:
+user.notprivileged: nobody
 
 #ch###################################################################################################
 client pass {
@@ -113,13 +115,9 @@ client pass {
 }
 
 #ch###################################################################################################
-pass {
+socks pass {
        from: 0.0.0.0/0 to: 0.0.0.0/0
 }
-
-
-# when running as usual, it will use the unprivileged userid of:
-# user.notprivileged: nobody
 
 # If you compiled with libwrap support, what userid should it use
 # when executing your libwrap commands?  "libwrap".
