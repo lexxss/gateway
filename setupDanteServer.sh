@@ -306,3 +306,17 @@ EOF
 useradd --shell /usr/sbin/nologin -p $(openssl passwd -1 ${user_pass}) ${user_name}
 systemctl restart danted
 systemctl enable danted
+
+systemd_override_folder=/etc/systemd/system/danted.service.d
+systemd_override_conf=${systemd_override_folder}/override.conf
+
+mkdir -p ${systemd_override_folder}
+
+cat > ${systemd_override_conf} <<EOF
+[Service]
+ExecStartPost=/bin/sleep 0.2
+Restart=always
+EOF
+
+systemctl daemon-reload
+systemctl restart danted
