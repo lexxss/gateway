@@ -55,8 +55,8 @@ access_log none
 cache deny all
 
 #ch###################################################################################################
-# здесь /usr/lib/squid3/basic_ncsa_auth это путь к самому хелперу, а /etc/squid/squidusers - путь к файлу, содержащему комбинации логинов и паролей.
-auth_param basic program /usr/lib/squid3/basic_ncsa_auth /etc/squid/squidusers
+# здесь /usr/lib/squid/basic_ncsa_auth это путь к самому хелперу, а /etc/squid/squidusers - путь к файлу, содержащему комбинации логинов и паролей.
+auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/squidusers
 #ch###################################################################################################
 # создание списка доступа, в который включены все прошедшие аутентификацию пользователи
 acl auth_users proxy_auth REQUIRED
